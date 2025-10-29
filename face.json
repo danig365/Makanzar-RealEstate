@@ -1,0 +1,94 @@
+{
+    "id": "cmfmouoxy0001o10iroygv9cc",
+    "title": "Corner 3 Marla House Near Park",
+    "slug": "corner-3-marla-house-near-park-6",
+    "description": "Brand new construction, wide road, near market.",
+    "type": "HOUSE",
+    "listingType": "SALE",
+    "status": "ACTIVE",
+    "price": "12500000",
+    "isNegotiable": true,
+    "bedrooms": 3,
+    "bathrooms": 4,
+    "areaSize": 3,
+    "areaUnit": "Marla",
+    "cityId": 1,
+    "areaId": 1,
+    "addressLine": "Street 5, Block B",
+    "latitude": 31.5204,
+    "longitude": 74.3587,
+    "contactName": "Ali",
+    "contactEmail": "owner@example.com",
+    "contactPhone": "03001234567",
+    "contactWhatsapp": null,
+    "contactMessageTmpl": null,
+    "coverImageUrl": null,
+    "featuresJson": {
+        "facing": "East",
+        "flooring": "Tiles"
+    },
+    "ownerId": "cmfmn9yq900001yd8kvuyv9ws",
+    "isDeleted": false,
+    "createdAt": "2025-09-16T15:09:03.815Z",
+    "updatedAt": "2025-09-16T15:09:03.815Z",
+    "publishedAt": "2025-09-13T09:30:00.000Z",
+    "city": {
+        "id": 1,
+        "name": "Lahore",
+        "slug": "lahore",
+        "createdAt": "2025-09-16T13:57:43.850Z",
+        "updatedAt": "2025-09-16T13:57:43.850Z"
+    },
+    "area": {
+        "id": 1,
+        "name": "Bahria Town Sector C",
+        "slug": "bahria-town-sector-c",
+        "cityId": 1,
+        "createdAt": "2025-09-16T13:58:07.384Z",
+        "updatedAt": "2025-09-16T13:58:07.384Z"
+    },
+    "owner": {
+        "id": "cmfmn9yq900001yd8kvuyv9ws",
+        "name": "Ali Irfan",
+        "email": "kisa@example.com",
+        "phone": "03001234567"
+    },
+    "images": [
+        {
+            "id": 17,
+            "propertyId": "cmfmouoxy0001o10iroygv9cc",
+            "imageUrl": "https://cdn.example.com/img1.jpg",
+            "isPrimary": true,
+            "sortOrder": 0,
+            "createdAt": "2025-09-16T15:09:03.820Z"
+        },
+        {
+            "id": 18,
+            "propertyId": "cmfmouoxy0001o10iroygv9cc",
+            "imageUrl": "https://cdn.example.com/img2.jpg",
+            "isPrimary": false,
+            "sortOrder": 1,
+            "createdAt": "2025-09-16T15:09:03.820Z"
+        }
+    ],
+    "amenities": [
+        {
+            "propertyId": "cmfmouoxy0001o10iroygv9cc",
+            "amenityId": 7,
+            "amenity": {
+                "id": 7,
+                "key": "PARKING",
+                "label": "Parking"
+            }
+        },
+        {
+            "propertyId": "cmfmouoxy0001o10iroygv9cc",
+            "amenityId": 8,
+            "amenity": {
+                "id": 8,
+                "key": "GAS",
+                "label": "Gas"
+            }
+        }
+    ]
+}
