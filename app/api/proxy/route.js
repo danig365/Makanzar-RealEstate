@@ -1,7 +1,9 @@
 export async function handler(request) {
   const url = new URL(request.url);
-  const pathAfterProxy = url.pathname.split("/api/proxy")[1] || "";
-  const targetUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}${pathAfterProxy}${url.search}`;
+  const pathAfterProxy = url.pathname.replace(/^\/api\/proxy/, "");
+  const targetUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL.replace(/\/$/, "")}${pathAfterProxy}${url.search}`;
+
+  console.log("🔍 Proxying request to:", targetUrl); // 👈 This helps debug on Vercel logs
 
   const options = {
     method: request.method,
@@ -12,6 +14,7 @@ export async function handler(request) {
       request.method !== "GET" && request.method !== "HEAD"
         ? await request.text()
         : undefined,
+    cache: "no-store",
   };
 
   try {
@@ -27,6 +30,7 @@ export async function handler(request) {
       },
     });
   } catch (error) {
+    console.error("❌ Proxy Error:", error);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
