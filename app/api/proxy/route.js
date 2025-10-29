@@ -1,29 +1,21 @@
 export async function handler(request) {
-  const { search, pathname } = new URL(request.url);
-  const targetUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}${pathname.replace(
-    "/api/proxy",
-    ""
-  )}${search}`;
-
-  // Copy headers except host
-  const headers = {};
-  request.headers.forEach((value, key) => {
-    if (key.toLowerCase() !== "host") headers[key] = value;
-  });
+  const url = new URL(request.url);
+  const pathAfterProxy = url.pathname.split("/api/proxy")[1] || "";
+  const targetUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}${pathAfterProxy}${url.search}`;
 
   const options = {
     method: request.method,
-    headers,
+    headers: {
+      "Content-Type": request.headers.get("content-type") || "application/json",
+    },
     body:
       request.method !== "GET" && request.method !== "HEAD"
         ? await request.text()
         : undefined,
-    cache: "no-store",
   };
 
   try {
     const response = await fetch(targetUrl, options);
-
     const contentType = response.headers.get("content-type") || "application/json";
     const data = await response.text();
 
@@ -31,7 +23,7 @@ export async function handler(request) {
       status: response.status,
       headers: {
         "Content-Type": contentType,
-        "Access-Control-Allow-Origin": "*", // optional (safe on server)
+        "Access-Control-Allow-Origin": "*",
       },
     });
   } catch (error) {
